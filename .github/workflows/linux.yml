@@ -26,17 +26,18 @@ jobs:
     strategy:
       matrix:
         BuildType: [Debug, Release]
+        runs-on: [ubuntu-22.04-arm, ubuntu-22.04]
         include:
-          - ARTIFACT: QGroundControl-aarch64.AppImage
+          - runs-on: ubuntu-22.04-arm
+            ARTIFACT: QGroundControl-aarch64.AppImage
             PACKAGE: QGroundControl-aarch64
             host: linux_arm64
             arch: linux_gcc_arm64
-            runs-on: ubuntu-22.04-arm
-          - ARTIFACT: QGroundControl-x86_64.AppImage
+          - runs-on: ubuntu-22.04
+            ARTIFACT: QGroundControl-x86_64.AppImage
             PACKAGE: QGroundControl-x86_64
             host: linux
             arch: linux_gcc_64
-            runs-on: ubuntu-22.04
 
     defaults:
       run:
