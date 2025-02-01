@@ -31,7 +31,7 @@ jobs:
             PACKAGE: QGroundControl-aarch64
             host: linux_arm64
             arch: linux_gcc_arm64
-            run-ons: ubuntu-22.04-arm
+            run-on: ubuntu-22.04-arm
           - ARTIFACT: QGroundControl-x86_64.AppImage
             PACKAGE: QGroundControl-x86_64
             host: linux
