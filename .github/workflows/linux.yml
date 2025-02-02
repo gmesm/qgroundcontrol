@@ -76,8 +76,8 @@ jobs:
           sudo apt-get install -y --quiet cmake
 
       - name: Setup Caching
+        if: ${{ matrix.arch=='linux_gcc_64' }}
         uses: ./.github/actions/cache
-        if: ${{ matrix.arch }} == 'linux_gcc_64'
         with:
           host: ${{ matrix.host }}
           target: desktop
