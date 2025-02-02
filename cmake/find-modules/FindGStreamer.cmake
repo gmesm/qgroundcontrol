@@ -53,12 +53,12 @@ elseif(MACOS)
     set(ENV{PKG_CONFIG_PATH} "${GSTREAMER_PREFIX}/lib/pkgconfig:${GSTREAMER_PREFIX}/lib/gstreamer-1.0/pkgconfig:$ENV{PKG_CONFIG_PATH}")
 elseif(LINUX)
     set(GSTREAMER_PREFIX "/usr")
-    set(ENV{PKG_CONFIG_PATH} "${GSTREAMER_PREFIX}/lib/x86_64-linux-gnu/pkgconfig:${GSTREAMER_PREFIX}/lib/x86_64-linux-gnu/gstreamer-1.0/pkgconfig:$ENV{PKG_CONFIG_PATH}")
+    set(ENV{PKG_CONFIG_PATH} "${GSTREAMER_PREFIX}/lib/${CMAKE_SYSTEM_PROCESSOR}-linux-gnu/pkgconfig:${GSTREAMER_PREFIX}/lib/${CMAKE_SYSTEM_PROCESSOR}-linux-gnu/gstreamer-1.0/pkgconfig:$ENV{PKG_CONFIG_PATH}")
     # if(QGC_GST_STATIC_BUILD)
     #     list(APPEND PKG_CONFIG_ARGN
     #         --dont-define-prefix
     #         --define-variable=prefix=${GSTREAMER_PREFIX}
-    #         --define-variable=libdir=${GSTREAMER_PREFIX}/lib/x86_64-linux-gnu
+    #         --define-variable=libdir=${GSTREAMER_PREFIX}/lib/${CMAKE_SYSTEM_PROCESSOR}-linux-gnu
     #         --define-variable=includedir=${GSTREAMER_PREFIX}/include
     #     )
     # endif()
@@ -136,7 +136,7 @@ cmake_print_variables(GSTREAMER_PREFIX)
 
 # TODO: find_path
 if(LINUX)
-    set(GSTREAMER_LIB_PATH ${GSTREAMER_PREFIX}/lib/x86_64-linux-gnu)
+    set(GSTREAMER_LIB_PATH ${GSTREAMER_PREFIX}/lib/${CMAKE_SYSTEM_PROCESSOR}-linux-gnu)
 elseif(MACOS OR ANDROID OR WIN32)
     set(GSTREAMER_LIB_PATH ${GSTREAMER_PREFIX}/lib)
 elseif(IOS)
