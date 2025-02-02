@@ -77,7 +77,7 @@ jobs:
           cpm-modules: ${{ env.CPM_SOURCE_CACHE }}
 
       - name: Install Qt for Linux
-        uses: jurplel/install-qt-action@v4
+        uses: jdpurcell/install-qt-action@ccf95d9524af497983ed5b0f506f503ef0d5dfb5 # https://github.com/jurplel/install-qt-action/pull/273
         with:
           version: ${{ env.QT_VERSION }}
           host: ${{ matrix.host }}
