@@ -67,6 +67,14 @@ jobs:
         run: |
           sudo apt install libvulkan-dev vulkan-validationlayers-dev
 
+      - name: Install Latest CMake # CMake 3.25+ needed on ARM Linux
+        run: |
+          sudo apt-get install -y --quiet ca-certificates gpg wget
+          wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /usr/share/keyrings/kitware-archive-keyring.gpg >/dev/null
+          echo 'deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] https://apt.kitware.com/ubuntu/ jammy main' | sudo tee /etc/apt/sources.list.d/kitware.list >/dev/null
+          sudo apt-get update -y --quiet
+          sudo apt-get install -y --quiet cmake
+
       - name: Setup Caching
         uses: ./.github/actions/cache
         if: ${{ matrix.arch }} == 'linux_gcc_64'
