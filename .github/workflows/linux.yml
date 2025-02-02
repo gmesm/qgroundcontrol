@@ -65,7 +65,13 @@ jobs:
 
       - name: Install Vulkan
         run: |
-          sudo apt install libvulkan-dev vulkan-validationlayers-dev
+          sudo apt install -y --quiet libvulkan-dev
+          if apt-cache show vulkan-validationlayers-dev >/dev/null 2>&1 && apt-cache show vulkan-validationlayers-dev 2>/dev/null | grep -q "^Package: vulkan-validationlayers-dev"; then
+            sudo apt-get install -y --quiet vulkan-validationlayers-dev
+          fi
+          if apt-cache show vulkan-utility-libraries-dev >/dev/null 2>&1 && apt-cache show vulkan-utility-libraries-dev 2>/dev/null | grep -q "^Package: apt-cache show vulkan-utility-libraries-dev"; then
+            sudo apt-get install -y --quiet vulkan-utility-libraries-dev
+          fi
 
       - name: Install Latest CMake # CMake 3.25+ needed on ARM Linux
         run: |
