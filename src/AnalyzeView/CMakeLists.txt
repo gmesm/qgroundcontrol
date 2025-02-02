@@ -102,11 +102,15 @@ endif()
 
 #===========================================================================#
 
-set(EXIV2_VERSION 0.28.3)
+set(EXIV2_VERSION 0.28.4)
 
 if(NOT QGC_BUILD_DEPENDENCIES)
     if(LINUX)
-        set(EXIV2_RELEASE_URL "https://github.com/Exiv2/exiv2/releases/download/v${EXIV2_VERSION}/exiv2-${EXIV2_VERSION}-Linux64.tar.gz")
+        if (CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64|amd64|AMD64")
+            set(EXIV2_RELEASE_URL "https://github.com/gmesm/exiv2/releases/download/v${EXIV2_VERSION}/exiv2-${EXIV2_VERSION}-Linux64.tar.gz")
+        elseif (CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64|arm64")
+            set(EXIV2_RELEASE_URL "https://github.com/gmesm/exiv2/releases/download/v${EXIV2_VERSION}/exiv2-${EXIV2_VERSION}-LinuxArm64.tar.gz")
+        endif()
     elseif(MACOS)
         set(EXIV2_RELEASE_URL "https://github.com/Exiv2/exiv2/releases/download/v${EXIV2_VERSION}/exiv2-${EXIV2_VERSION}-Darwin.tar.gz")
     endif()
