@@ -43,7 +43,8 @@ execute_process(COMMAND ${LD_PATH}
     --appdir ${APPDIR_PATH}
     --executable ${APPDIR_PATH}/usr/bin/QGroundControl
     --desktop-file ${APPDIR_PATH}/usr/share/applications/org.mavlink.qgroundcontrol.desktop
-    --custom-apprun ${CMAKE_BINARY_DIR}/AppRun)
+    --custom-apprun ${CMAKE_BINARY_DIR}/AppRun
+    COMMAND_ERROR_IS_FATAL ANY)
 # --exclude-library "libgst*"
 # --plugin qt --plugin gtk --plugin gstreamer
 
@@ -51,4 +52,5 @@ set(ENV{ARCH} ${CMAKE_SYSTEM_PROCESSOR})
 # set(ENV{VERSION} 5.0)
 
 message(STATUS "Executing appimagetool")
-execute_process(COMMAND ${APPIMAGETOOL_PATH} ${APPDIR_PATH})
+execute_process(COMMAND ${APPIMAGETOOL_PATH} ${APPDIR_PATH}
+    COMMAND_ERROR_IS_FATAL ANY)
