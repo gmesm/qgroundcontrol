@@ -11,7 +11,7 @@ set(LD_PATH "${CMAKE_BINARY_DIR}/linuxdeploy-${CMAKE_SYSTEM_PROCESSOR}.AppImage"
 # set(LD_GTKPLUGIN_PATH "${CMAKE_BINARY_DIR}/linuxdeploy-plugin-gtk.sh")
 
 if(NOT EXISTS "${APPIMAGETOOL_PATH}")
-    file(DOWNLOAD "https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-${CMAKE_SYSTEM_PROCESSOR}.AppImage" "${APPIMAGETOOL_PATH}")
+    file(DOWNLOAD https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-${CMAKE_SYSTEM_PROCESSOR}.AppImage "${APPIMAGETOOL_PATH}")
     # file(DOWNLOAD https://github.com/probonopd/go-appimage/releases/download/832/appimagetool-823-x86_64.AppImage "${APPIMAGETOOL_PATH}") # TODO: Use Continuous Release
     execute_process(COMMAND chmod a+x "${APPIMAGETOOL_PATH}")
 endif()
