@@ -121,19 +121,19 @@ jobs:
       - name: Sanity check release excecutable
         if: matrix.BuildType == 'Release'
         working-directory: ${{ runner.temp }}/shadow_build_dir
-        run: xvfb-run -a ./${{ env.ARTIFACT }} --simple-boot-test
+        run: xvfb-run -a ./${{ matrix.ARTIFACT }} --simple-boot-test
 
       - name: Run unit tests
         if: matrix.BuildType == 'Debug'
         working-directory: ${{ runner.temp }}/shadow_build_dir
-        run: xvfb-run -a ./${{ env.ARTIFACT }} --unittest
+        run: xvfb-run -a ./${{ matrix.ARTIFACT }} --unittest
 
       - name: Upload Build File
         if: matrix.BuildType == 'Release'
         uses: ./.github/actions/upload
         with:
-          artifact_name: ${{ env.ARTIFACT }}
-          package_name: ${{ env.PACKAGE }}
+          artifact_name: ${{ matrix.ARTIFACT }}
+          package_name: ${{ matrix.PACKAGE }}
           aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
