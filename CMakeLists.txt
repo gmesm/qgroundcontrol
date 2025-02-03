@@ -596,7 +596,7 @@ elseif(LINUX)
         FILES ${CMAKE_SOURCE_DIR}/deploy/linux/AppRun
         DESTINATION ${CMAKE_BINARY_DIR}
     )
-    install(SCRIPT "${CMAKE_SOURCE_DIR}/cmake/CreateAppImage.cmake")
+    install(SCRIPT "${CMAKE_SOURCE_DIR}/cmake/CreateAppImage.cmake" CMAKE_ARGS "-DCMAKE_SYSTEM_PROCESSOR=${CMAKE_SYSTEM_PROCESSOR}")
 elseif(WIN32)
     install(SCRIPT "${CMAKE_SOURCE_DIR}/cmake/CreateWinInstaller.cmake")
 elseif(MACOS)
