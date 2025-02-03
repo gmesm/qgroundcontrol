@@ -102,7 +102,7 @@ endif()
 
 #===========================================================================#
 
-set(EXIV2_VERSION 0.28.4)
+set(EXIV2_VERSION 0.28.3)
 
 if(NOT QGC_BUILD_DEPENDENCIES)
     if(LINUX)
